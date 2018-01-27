@@ -99,7 +99,6 @@ func _fixed_process(delta):
 		# if normal is floor, then set as grounded
 		if normal == Vector2(0, -1):
 			last_frame_grounded = true
-			print("Entrou no lastframegrounded")
 			air_jump_count = 0
 	elif last_frame_grounded:
 		last_frame_grounded = false
@@ -116,12 +115,17 @@ func _fixed_process(delta):
 			new_anim = "moveright"
 		elif velocity.x < 0:
 			new_anim = "moveleft"
+		elif velocity.x == 0:
+			new_anim = "idle"
+		elif velocity.y != 0:
+			new_anim = "jumping"
 		
 	else:
-		new_anim = "jumping"
+		new_anim = "air"
 	#apply animation
 	if new_anim != last_anim:
 		anim.play(new_anim)
 		last_anim = new_anim
+
 func get_center_pos():
 	return get_pos() + get_node("CollisionShape2D").get_pos()

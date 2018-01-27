@@ -1,18 +1,86 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://personagem.gd" type="Script" id=1]
-[ext_resource path="res://kenney_platformercharacters/PNG/Female/female_tilesheet.png" type="Texture" id=2]
+[ext_resource path="res://sprites/pixel guy.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 10.3671, 10 )
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[sub_resource type="Animation" id=2]
+
+resource/name = "idle"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 4 ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource/name = "jumping"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "moveleft"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource/name = "moveright"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ 6, 7 ]
+}
+
+[node name="Jogador" type="KinematicBody2D"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 2.93668, 0, 0, 4.26814, 0.426646, 12.1766 )
+shapes/0/shape = SubResource( 6 )
+shapes/0/transform = Matrix32( 0.983041, 0, 0, 1.36879, -0.705719, 0.691127 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -20,27 +88,42 @@ collision/margin = 0.08
 script/script = ExtResource( 1 )
 GRAVITY = 10
 MAX_FALLING_SPEED = 15
-MOVE_SPEED = 5
+MOVE_SPEED = 3
 MOVE_SPEED_TIME_NEEDED = 0.15
 DECELERATION_TIME_NEEDED = 0.15
-MAX_JUMP_POWER = 2
-MIN_JUMP_POWER = 1.5
-MAX_AIR_JUMP_POWER = 2
-MIN_AIR_JUMP_POWER = 1.5
-MAX_AIR_JUMP_COUNT = 1
+MAX_JUMP_POWER = 5
+MIN_JUMP_POWER = 2
+MAX_AIR_JUMP_POWER = 3
+MIN_AIR_JUMP_POWER = 1
+MAX_AIR_JUMP_COUNT = 0
 
 [node name="Sprite" type="Sprite" parent="."]
 
 texture = ExtResource( 2 )
-vframes = 3
+offset = Vector2( 0, 1 )
 hframes = 9
+frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( 0.426646, 12.1766 )
-transform/scale = Vector2( 2.93668, 4.26814 )
-shape = SubResource( 1 )
+transform/pos = Vector2( -0.705719, 0.691127 )
+transform/scale = Vector2( 0.983041, 1.36879 )
+shape = SubResource( 6 )
 trigger = false
 _update_shape_index = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/idle = SubResource( 2 )
+anims/jumping = SubResource( 5 )
+anims/moveleft = SubResource( 3 )
+anims/moveright = SubResource( 4 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "idle"
 
 

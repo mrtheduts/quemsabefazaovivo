@@ -12,11 +12,11 @@ var move_step = 0
 export var DECELERATION_TIME_NEEDED = .15
 var dec_step = 0
 # jump power
-export var MAX_JUMP_POWER = 2
-export var MIN_JUMP_POWER = 1.5
-export var MAX_AIR_JUMP_POWER = 2
-export var MIN_AIR_JUMP_POWER = 1.5
-export var MAX_AIR_JUMP_COUNT = 1
+export var MAX_JUMP_POWER = 5
+export var MIN_JUMP_POWER = 2
+export var MAX_AIR_JUMP_POWER = 3
+export var MIN_AIR_JUMP_POWER = 1
+export var MAX_AIR_JUMP_COUNT = 0
 # store the player velocity
 var velocity = Vector2()
 # store status of jump input
@@ -25,11 +25,17 @@ var is_jump_pressed = false
 var last_frame_grounded = false
 #store jump counter
 var air_jump_count = 0
+var facing_dir = 1
+var last_anim = ""
+onready var anim = get_node("AnimationPlayer")
+onready var sprite = get_node("Sprite")
 # Called when the node is "ready", that means called when the game started.
 # Use this function for initialize
 func _ready():
 	move_step = MOVE_SPEED / MOVE_SPEED_TIME_NEEDED
 	dec_step = MOVE_SPEED / DECELERATION_TIME_NEEDED
+	last_anim = anim.get_current_animation()
+	# makes `_fixed_process(delta)` running
 	set_fixed_process(true)
 # Called during the fixed processing step of the main loop.
 # Fixed processing means that the frame rate is synced to the physics,
@@ -42,6 +48,7 @@ func _fixed_process(delta):
 	var right_input = Input.is_action_pressed("right")
 	var left_input = Input.is_action_pressed("left")
 	var jump_input = Input.is_action_pressed("jump")
+	var m_key = Input.is_action_pressed("moonwalk")
 	#Apply the horizontal movement
 	if right_input:
 		movement.x += move_step * delta
@@ -92,6 +99,29 @@ func _fixed_process(delta):
 		# if normal is floor, then set as grounded
 		if normal == Vector2(0, -1):
 			last_frame_grounded = true
+			print("Entrou no lastframegrounded")
 			air_jump_count = 0
 	elif last_frame_grounded:
 		last_frame_grounded = false
+	if velocity.x != 0:
+		facing_dir = sign(velocity.x)
+	#sprite.set_flip_h(facing_dir != 1)
+	var new_anim = "idle"
+	if last_frame_grounded:
+		if velocity.x < 0 && m_key:
+			new_anim = "moveright"
+		elif velocity.x > 0 && m_key:
+			new_anim = "moveleft"
+		elif velocity.x > 0:
+			new_anim = "moveright"
+		elif velocity.x < 0:
+			new_anim = "moveleft"
+		
+	else:
+		new_anim = "jumping"
+	#apply animation
+	if new_anim != last_anim:
+		anim.play(new_anim)
+		last_anim = new_anim
+func get_center_pos():
+	return get_pos() + get_node("CollisionShape2D").get_pos()

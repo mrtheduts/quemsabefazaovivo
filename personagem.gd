@@ -99,7 +99,6 @@ func _fixed_process(delta):
 		# if normal is floor, then set as grounded
 		if normal == Vector2(0, -1):
 			last_frame_grounded = true
-			print("Entrou no lastframegrounded")
 			air_jump_count = 0
 	elif last_frame_grounded:
 		last_frame_grounded = false

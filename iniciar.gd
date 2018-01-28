@@ -1,5 +1,7 @@
 extends Node2D
-onready var botao = get_node("jogar")
+
+var maingame = preload("res://main.tscn")
+var retryscreen = preload("res://gameover.tscn")
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
@@ -7,8 +9,18 @@ onready var botao = get_node("jogar")
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
+	
 	pass
 
 func _on_jogar_pressed():
-	get_tree().change_scene("res://main.tscn")
+	var game = maingame.instance()
+	get_parent().add_child(game)
+	hide()
 	pass # replace with function body
+func retry(pathtochild):
+	
+	get_parent().remove_child(get_node(pathtochild))
+	var retry = retryscreen.instance()
+	get_parent().add_child(retry)
+	pass
+	

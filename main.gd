@@ -16,4 +16,5 @@ func _fixed_process(delta):
 	tempo -= delta
 	timer.set_text(String(int(tempo)))
 	if tempo <= 0:
+		get_parent().get_node("menuiniciar").retry(get_path())
 		tempo = 0

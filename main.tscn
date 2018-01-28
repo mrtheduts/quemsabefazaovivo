@@ -4,8 +4,8 @@
 [ext_resource path="res://sprites/fundo12.png" type="Texture" id=2]
 [ext_resource path="res://sprites/INSCRIÇÃO-SE-VIRA-NOS-30.png" type="Texture" id=3]
 [ext_resource path="res://personagem.tscn" type="PackedScene" id=4]
-[ext_resource path="res://medidor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://efeitotv.tscn" type="PackedScene" id=6]
+[ext_resource path="res://efeitotv.tscn" type="PackedScene" id=5]
+[ext_resource path="res://medidor.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -30,6 +30,7 @@ animations = [ {
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
+editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1.96539, 0, 0, 1.52626, -85.6985, 472.795 )
@@ -109,13 +110,9 @@ shadow/item_mask = 1
 transform/pos = Vector2( -71.5181, 288.564 )
 transform/scale = Vector2( 5, 5 )
 
-[node name="medidor" parent="." instance=ExtResource( 5 )]
+[node name="efeitotv" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 118.527, 334.628 )
-transform/scale = Vector2( 1.85905, 1.85905 )
-
-[node name="efeitotv" parent="." instance=ExtResource( 6 )]
-
+visibility/visible = false
 transform/pos = Vector2( -105.284, 339.7 )
 transform/scale = Vector2( 2.22527, 2.93766 )
 
@@ -139,5 +136,24 @@ drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
+
+[node name="medidor" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -363.123, 353.766 )
+transform/scale = Vector2( 1.5, 1.6 )
+
+[node name="tempo" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -389.0
+margin/top = 305.0
+margin/right = -349.0
+margin/bottom = 319.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 

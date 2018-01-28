@@ -47,12 +47,15 @@ func _fixed_process(delta):
 	#input
 	var right_input = Input.is_action_pressed("right")
 	var left_input = Input.is_action_pressed("left")
-	var jump_input = Input.is_action_pressed("jump")
+	#var jump_input = Input.is_action_pressed("jump")
+	var jump_input = false
 	var moonwalk = Input.is_action_pressed("moonwalk")
 	var macarena = Input.is_action_pressed("macarena")
 	var breakdance = Input.is_action_pressed("breakdance")
 	var estrela = Input.is_action_pressed("estrela")
 	var rebolada = Input.is_action_pressed("rebolada")
+
+	
 	#Apply the horizontal movement
 	if right_input:
 		movement.x += move_step * delta
@@ -107,11 +110,13 @@ func _fixed_process(delta):
 			else:
 				velocity.x = -MOVE_SPEED
 			sprite.set_flip_h(facing_dir == -1)
+			global.termometro = global.termometro - 0.01
 		elif breakdance:
 			new_anim = "breakdance"
 		elif anim.get_current_animation() == "breakdance" && anim.get_pos() < 1.5:
 			new_anim = "breakdance"
 			sprite.set_flip_h(facing_dir == -1)
+			global.termometro = global.termometro - 0.05
 		elif velocity.x < 0 && moonwalk:
 			new_anim = "moveright"
 		elif velocity.x > 0 && moonwalk:
@@ -125,11 +130,13 @@ func _fixed_process(delta):
 		elif anim.get_current_animation() == "macarena" && anim.get_pos() < 4:
 			new_anim = "macarena"
 			sprite.set_flip_h(facing_dir == 1)
+			global.termometro = global.termometro - 0.01
 		elif velocity.x == 0 && rebolada:
 			new_anim = "rebolada"
 		elif anim.get_current_animation() == "rebolada" && anim.get_pos() < 1.5:
 			new_anim = "rebolada"
 			sprite.set_flip_h(facing_dir == 1)
+			global.termometro = global.termometro - 0.01
 
 			
 		

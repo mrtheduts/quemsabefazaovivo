@@ -1,12 +1,30 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=10 format=1]
 
-[ext_resource path="res://8-bit-landscape-1.png" type="Texture" id=1]
-[ext_resource path="res://personagem.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/fundo11.png" type="Texture" id=1]
+[ext_resource path="res://sprites/fundo12.png" type="Texture" id=2]
+[ext_resource path="res://sprites/INSCRIÇÃO-SE-VIRA-NOS-30.png" type="Texture" id=3]
+[ext_resource path="res://personagem.tscn" type="PackedScene" id=4]
+[ext_resource path="res://medidor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://efeitotv.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 740.659, 10 )
+extents = Vector2( 99.2816, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 21.8235, 8.44081 )
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Jogo" type="Node2D"]
 
@@ -14,8 +32,14 @@ extents = Vector2( 740.659, 10 )
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1.72221, 0, 0, 5.24735, 6.37061, 575.099 )
+shapes/0/transform = Matrix32( 1.96539, 0, 0, 1.52626, -85.6985, 472.795 )
 shapes/0/trigger = false
+shapes/1/shape = SubResource( 2 )
+shapes/1/transform = Matrix32( 1, 0, 0, 17.6051, -277.52, 313.332 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 2 )
+shapes/2/transform = Matrix32( 1, 0, 0, 17.6051, 121.831, 314.383 )
+shapes/2/trigger = false
 collision/layers = 1
 collision/mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
@@ -23,30 +47,86 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
+[node name="Fundo" type="AnimatedSprite" parent="StaticBody2D"]
+
+transform/pos = Vector2( -24.0442, 324.658 )
+transform/scale = Vector2( 1.59373, 1.59373 )
+frames = SubResource( 3 )
+animation = "default"
+frame = 1
+playing = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 
-transform/pos = Vector2( 6.37061, 575.099 )
-transform/scale = Vector2( 1.72221, 5.24735 )
+transform/pos = Vector2( -85.6985, 472.795 )
+transform/scale = Vector2( 1.96539, 1.52626 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Fundo" type="Sprite" parent="StaticBody2D"]
+[node name="CollisionShape2D 2" type="CollisionShape2D" parent="StaticBody2D"]
 
-texture = ExtResource( 1 )
+transform/pos = Vector2( -277.52, 313.332 )
+transform/scale = Vector2( 1, 17.6051 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 1
 
-[node name="Personagem" parent="." instance=ExtResource( 2 )]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 
-transform/pos = Vector2( 5.16174, 255.926 )
+transform/pos = Vector2( 121.831, 314.383 )
+transform/scale = Vector2( 1, 17.6051 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 2
+
+[node name="Light2D" type="Light2D" parent="StaticBody2D"]
+
+transform/pos = Vector2( -82.4481, 324.498 )
+transform/scale = Vector2( 0.737769, 0.936165 )
+enabled = true
+editor_only = false
+texture = ExtResource( 3 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 0.8
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0.0156863, 0.0156863, 0.00392157, 1 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="Personagem" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( -71.5181, 288.564 )
 transform/scale = Vector2( 5, 5 )
+
+[node name="medidor" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 118.527, 334.628 )
+transform/scale = Vector2( 1.85905, 1.85905 )
+
+[node name="efeitotv" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -105.284, 339.7 )
+transform/scale = Vector2( 2.22527, 2.93766 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-transform/pos = Vector2( 0, 274.561 )
+transform/pos = Vector2( -26.5487, 326.085 )
+transform/scale = Vector2( 0.0282428, 0.901551 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 1, 1 )
+zoom = Vector2( 0.87, 0.97 )
 limit/left = -10000000
 limit/top = -10000000
 limit/right = 10000000

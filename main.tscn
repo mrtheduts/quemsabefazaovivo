@@ -1,11 +1,46 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=46 format=1]
 
 [ext_resource path="res://sprites/fundo11.png" type="Texture" id=1]
 [ext_resource path="res://sprites/fundo12.png" type="Texture" id=2]
 [ext_resource path="res://sprites/INSCRIÇÃO-SE-VIRA-NOS-30.png" type="Texture" id=3]
 [ext_resource path="res://personagem.tscn" type="PackedScene" id=4]
-[ext_resource path="res://medidor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://efeitotv.tscn" type="PackedScene" id=6]
+[ext_resource path="res://123Ja.smp" type="Sample" id=5]
+[ext_resource path="res://AirHorn.smp" type="Sample" id=6]
+[ext_resource path="res://Applause1.smp" type="Sample" id=7]
+[ext_resource path="res://Applause2.smp" type="Sample" id=8]
+[ext_resource path="res://AtencaoGaleraVamosFocar.smp" type="Sample" id=9]
+[ext_resource path="res://Boo1.smp" type="Sample" id=10]
+[ext_resource path="res://Boo2.smp" type="Sample" id=11]
+[ext_resource path="res://Buzzer.smp" type="Sample" id=12]
+[ext_resource path="res://Cheering.smp" type="Sample" id=13]
+[ext_resource path="res://ComoIssoAconteceu.smp" type="Sample" id=14]
+[ext_resource path="res://CrowdCheer.smp" type="Sample" id=15]
+[ext_resource path="res://Eeeeita.smp" type="Sample" id=16]
+[ext_resource path="res://EhHoraDeAlegriaGalera.smp" type="Sample" id=17]
+[ext_resource path="res://EntaoFazOQueVoceQuiser.smp" type="Sample" id=18]
+[ext_resource path="res://Errou.smp" type="Sample" id=19]
+[ext_resource path="res://Faustop.smp" type="Sample" id=20]
+[ext_resource path="res://GaleraDeCasaAiComoEhQueEhMeu.smp" type="Sample" id=21]
+[ext_resource path="res://IhMeu.smp" type="Sample" id=22]
+[ext_resource path="res://LogoDepoisDosReclamesDoPlimPlim.smp" type="Sample" id=23]
+[ext_resource path="res://Maravilha.smp" type="Sample" id=24]
+[ext_resource path="res://MeeeeuDeus.smp" type="Sample" id=25]
+[ext_resource path="res://MostraAiO.smp" type="Sample" id=26]
+[ext_resource path="res://OLoco.smp" type="Sample" id=27]
+[ext_resource path="res://OLokoMeu.smp" type="Sample" id=28]
+[ext_resource path="res://OlhaMeu.smp" type="Sample" id=29]
+[ext_resource path="res://ParaUmBrasilDeAudiencia.smp" type="Sample" id=30]
+[ext_resource path="res://PorraMeuAla.smp" type="Sample" id=31]
+[ext_resource path="res://QueFiguraHeinMeu.smp" type="Sample" id=32]
+[ext_resource path="res://ScreamOfJoy.smp" type="Sample" id=33]
+[ext_resource path="res://SpinJump.smp" type="Sample" id=34]
+[ext_resource path="res://TaBom.smp" type="Sample" id=35]
+[ext_resource path="res://VaiMorrer.smp" type="Sample" id=36]
+[ext_resource path="res://VideoCassetadaAoVivo.smp" type="Sample" id=37]
+[ext_resource path="res://macarena.smp" type="Sample" id=38]
+[ext_resource path="res://medidor.tscn" type="PackedScene" id=39]
+[ext_resource path="res://efeitotv.tscn" type="PackedScene" id=40]
+[ext_resource path="res://8-Bit_Circus_Theme_Music_Sound_Free_Sound_Effects.ogg" type="AudioStream" id=41]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -25,6 +60,213 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="SampleLibrary" id=4]
+
+samples/123Ja = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 5 )
+}
+samples/AirHorn = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 6 )
+}
+samples/Applause1 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 7 )
+}
+samples/Applause2 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 8 )
+}
+samples/AtencaoGaleraVamosFocar = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 9 )
+}
+samples/Boo1 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 10 )
+}
+samples/Boo2 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 11 )
+}
+samples/Buzzer = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 12 )
+}
+samples/Cheering = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 13 )
+}
+samples/ComoIssoAconteceu = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 14 )
+}
+samples/CrowdCheer = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 15 )
+}
+samples/Eeeeita = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 16 )
+}
+samples/EhHoraDeAlegriaGalera = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 17 )
+}
+samples/EntaoFazOQueVoceQuiser = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 18 )
+}
+samples/Errou = {
+"db": -6.8,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 19 )
+}
+samples/Faustop = {
+"db": -6.8,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 20 )
+}
+samples/GaleraDeCasaAiComoEhQueEhMeu = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 21 )
+}
+samples/IhMeu = {
+"db": -6.8,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 22 )
+}
+samples/LogoDepoisDosReclamesDoPlimPlim = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 23 )
+}
+samples/Maravilha = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 24 )
+}
+samples/MeeeeuDeus = {
+"db": -6.8,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 25 )
+}
+samples/MostraAiO = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 26 )
+}
+samples/OLoco = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 27 )
+}
+samples/OLokoMeu = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 28 )
+}
+samples/OlhaMeu = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 29 )
+}
+samples/ParaUmBrasilDeAudiencia = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 30 )
+}
+samples/PorraMeuAla = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 31 )
+}
+samples/QueFiguraHeinMeu = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 32 )
+}
+samples/ScreamOfJoy = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 33 )
+}
+samples/SpinJump = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 34 )
+}
+samples/TaBom = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 35 )
+}
+samples/VaiMorrer = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 36 )
+}
+samples/VideoCassetadaAoVivo = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 37 )
+}
+samples/macarena = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 38 )
+}
 
 [node name="Jogo" type="Node2D"]
 
@@ -109,12 +351,29 @@ shadow/item_mask = 1
 transform/pos = Vector2( -71.5181, 288.564 )
 transform/scale = Vector2( 5, 5 )
 
-[node name="medidor" parent="." instance=ExtResource( 5 )]
+[node name="SamplePlayer" type="SamplePlayer" parent="Personagem"]
+
+config/polyphony = 5
+config/samples = SubResource( 4 )
+default/volume_db = 0.0
+default/pitch_scale = 1.0
+default/pan = 0.0
+default/depth = 0.0
+default/height = 0.0
+default/filter/type = 0
+default/filter/cutoff = 5000.0
+default/filter/resonance = 1.0
+default/filter/gain = 1.0
+default/reverb_room = 2
+default/reverb_send = 0.0
+default/chorus_send = 0.0
+
+[node name="medidor" parent="." instance=ExtResource( 39 )]
 
 transform/pos = Vector2( 118.527, 334.628 )
 transform/scale = Vector2( 1.85905, 1.85905 )
 
-[node name="efeitotv" parent="." instance=ExtResource( 6 )]
+[node name="efeitotv" parent="." instance=ExtResource( 40 )]
 
 transform/pos = Vector2( -105.284, 339.7 )
 transform/scale = Vector2( 2.22527, 2.93766 )
@@ -139,5 +398,16 @@ drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
+
+[node name="StreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 41 )
+stream/play = true
+stream/loop = true
+stream/volume_db = -19.38
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
 
 

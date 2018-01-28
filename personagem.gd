@@ -48,7 +48,11 @@ func _fixed_process(delta):
 	var right_input = Input.is_action_pressed("right")
 	var left_input = Input.is_action_pressed("left")
 	var jump_input = Input.is_action_pressed("jump")
-	var m_key = Input.is_action_pressed("moonwalk")
+	var moonwalk = Input.is_action_pressed("moonwalk")
+	var macarena = Input.is_action_pressed("macarena")
+	var breakdance = Input.is_action_pressed("breakdance")
+	var estrela = Input.is_action_pressed("estrela")
+	var rebolada = Input.is_action_pressed("rebolada")
 	#Apply the horizontal movement
 	if right_input:
 		movement.x += move_step * delta
@@ -88,6 +92,54 @@ func _fixed_process(delta):
 	# set the maximum falling speed
 	if velocity.y > MAX_FALLING_SPEED:
 		velocity.y = MAX_FALLING_SPEED
+	
+	
+	var new_anim = "idle"
+	sprite.set_flip_h(facing_dir == 1)
+	if last_frame_grounded:
+		if estrela:
+			new_anim = "estrela"
+
+		elif anim.get_current_animation() == "estrela" && anim.get_pos() < 0.85:
+			new_anim = "estrela"
+			if facing_dir == 1:
+				velocity.x = MOVE_SPEED
+			else:
+				velocity.x = -MOVE_SPEED
+			sprite.set_flip_h(facing_dir == -1)
+		elif breakdance:
+			new_anim = "breakdance"
+		elif anim.get_current_animation() == "breakdance" && anim.get_pos() < 1.5:
+			new_anim = "breakdance"
+			sprite.set_flip_h(facing_dir == -1)
+		elif velocity.x < 0 && moonwalk:
+			new_anim = "moveright"
+		elif velocity.x > 0 && moonwalk:
+			new_anim = "moveleft"
+		elif velocity.x > 0:
+			new_anim = "moveleft"
+		elif velocity.x < 0:
+			new_anim = "moveleft"
+		elif velocity.x == 0 && macarena:
+			new_anim = "macarena"
+		elif anim.get_current_animation() == "macarena" && anim.get_pos() < 4:
+			new_anim = "macarena"
+			sprite.set_flip_h(facing_dir == 1)
+		elif velocity.x == 0 && rebolada:
+			new_anim = "rebolada"
+		elif anim.get_current_animation() == "rebolada" && anim.get_pos() < 1.5:
+			new_anim = "rebolada"
+			sprite.set_flip_h(facing_dir == 1)
+
+			
+		
+	else:
+		new_anim = "jumping"
+	#apply animation
+	if new_anim != last_anim:
+		anim.play(new_anim)
+		last_anim = new_anim
+		
 	# apply the movement by calling move(velocity) and store the remaining movement
 	var remaining_movement = move(velocity)
 	# collision handling
@@ -104,23 +156,5 @@ func _fixed_process(delta):
 		last_frame_grounded = false
 	if velocity.x != 0:
 		facing_dir = sign(velocity.x)
-	#sprite.set_flip_h(facing_dir != 1)
-	var new_anim = "idle"
-	if last_frame_grounded:
-		if velocity.x < 0 && m_key:
-			new_anim = "moveright"
-		elif velocity.x > 0 && m_key:
-			new_anim = "moveleft"
-		elif velocity.x > 0:
-			new_anim = "moveright"
-		elif velocity.x < 0:
-			new_anim = "moveleft"
-		
-	else:
-		new_anim = "jumping"
-	#apply animation
-	if new_anim != last_anim:
-		anim.play(new_anim)
-		last_anim = new_anim
 func get_center_pos():
 	return get_pos() + get_node("CollisionShape2D").get_pos()

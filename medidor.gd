@@ -9,7 +9,7 @@ func _ready():
 func _fixed_process(delta):
 	
 	skin.set_frame(int(global.termometro))
-	global.termometro += 0.01
+	global.termometro += 0.005
 	if global.termometro < 0:
 		global.termometro = 0
 	if global.termometro > 9:

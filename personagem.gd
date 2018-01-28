@@ -113,17 +113,18 @@ func _fixed_process(delta):
 		elif velocity.x == 0 && queda:
 			new_anim = "queda"
 			if not get_node("SamplePlayer").is_active():
-				get_node("SamplePlayer").play("Eeeeita")
-				get_node("SamplePlayer").play("Boo2")
+				get_node("SamplePlayer").play("VideoCassetadaAoVivo")
+				get_node("SamplePlayer").play("Boo1")
+				get_node("SamplePlayer").play("ScreamOfJoy")
 		elif anim.get_current_animation() == "queda" && anim.get_pos() < 2:
 			new_anim = "queda"
 			velocity.x = 0
 		if estrela:
 			new_anim = "estrela"
 			if not get_node("SamplePlayer").is_active():
-				get_node("SamplePlayer").play("OLoco")
+				get_node("SamplePlayer").play("OlhaMeu")
 				get_node("SamplePlayer").play("CrowdCheer")
-				get_node("SamplePlayer").play("SpinJump")
+				get_node("SamplePlayer").play("Applause1")
 		elif anim.get_current_animation() == "estrela" && anim.get_pos() < 0.85:
 			new_anim = "estrela"
 			if facing_dir == 1:
@@ -131,22 +132,22 @@ func _fixed_process(delta):
 			else:
 				velocity.x = -MOVE_SPEED
 			sprite.set_flip_h(facing_dir == -1)
-			global.termometro = global.termometro - 0.01
+			global.termometro = global.termometro - 0.02
 		elif breakdance:
 			new_anim = "breakdance"
 			if not get_node("SamplePlayer").is_active():
 				get_node("SamplePlayer").play("OLokoMeu")
 				get_node("SamplePlayer").play("CrowdCheer")
-				get_node("SamplePlayer").play("SpinJump")
+				get_node("SamplePlayer").play("Cheering")
 		elif anim.get_current_animation() == "breakdance" && anim.get_pos() < 1.5:
 			new_anim = "breakdance"
 			sprite.set_flip_h(facing_dir == -1)
-			global.termometro = global.termometro - 0.05
+			global.termometro = global.termometro - 0.03
 		elif velocity.x < 0 && moonwalk:
 			new_anim = "moveright"
 			if not get_node("SamplePlayer").is_active():
-				get_node("SamplePlayer").play("PorraMeuAla")
-				get_node("SamplePlayer").play("CrowdCheer")
+				get_node("SamplePlayer").play("OLoco")
+				get_node("SamplePlayer").play("Applause2")
 		elif velocity.x > 0 && moonwalk:
 			new_anim = "moveright"
 			if not get_node("SamplePlayer").is_active():
@@ -160,20 +161,21 @@ func _fixed_process(delta):
 			new_anim = "macarena"
 			if not get_node("SamplePlayer").is_active():
 				get_node("SamplePlayer").play("macarena")
-				get_node("SamplePlayer").play("CrowdCheer")
+				get_node("SamplePlayer").play("Applause2")
+				get_node("SamplePlayer").play("MostraAiO")
 		elif anim.get_current_animation() == "macarena" && anim.get_pos() < 4:
 			new_anim = "macarena"
 			sprite.set_flip_h(facing_dir == 1)
-			global.termometro = global.termometro - 0.01
+			global.termometro = global.termometro - 0.02
 		elif velocity.x == 0 && rebolada:
 			new_anim = "rebolada"
 			if not get_node("SamplePlayer").is_active():
-				get_node("SamplePlayer").play("Eeeeita")
-				get_node("SamplePlayer").play("CrowdCheer")
+				get_node("SamplePlayer").play("QueFiguraHeinMeu")
+				get_node("SamplePlayer").play("Cheering")
 		elif anim.get_current_animation() == "rebolada" && anim.get_pos() < 1.5:
 			new_anim = "rebolada"
 			sprite.set_flip_h(facing_dir == 1)
-			global.termometro = global.termometro - 0.01
+			global.termometro = global.termometro - 0.02
 		
 	else:
 		new_anim = "jumping"

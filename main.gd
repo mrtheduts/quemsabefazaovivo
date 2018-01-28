@@ -1,6 +1,6 @@
 extends Node2D
 
-var tempo = 31
+var tempo = 11
 onready var timer = get_node("timer")
 # class member variables go here, for example:
 # var a = 2
@@ -15,6 +15,7 @@ func _ready():
 func _fixed_process(delta):
 	tempo -= delta
 	timer.set_text(String(int(tempo)))
+	global.termometrofinal = global.termometro
 	if tempo <= 0:
 		get_parent().get_node("menuiniciar").retry(get_path())
 		tempo = 0

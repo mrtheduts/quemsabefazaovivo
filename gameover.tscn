@@ -1,17 +1,23 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://gameover.gd" type="Script" id=1]
 [ext_resource path="res://sprites/gameover2.png" type="Texture" id=2]
-[ext_resource path="res://sprites/retry_button.png" type="Texture" id=3]
+[ext_resource path="res://sprites/win.png" type="Texture" id=3]
+[ext_resource path="res://sprites/retry_button.png" type="Texture" id=4]
 
 [node name="Node2D" type="Node2D"]
 
 script/script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="gameover" type="Sprite" parent="."]
 
 transform/pos = Vector2( -120.423, 263.951 )
 texture = ExtResource( 2 )
+
+[node name="vocevenceu" type="Sprite" parent="."]
+
+transform/pos = Vector2( -100.422, 248.266 )
+texture = ExtResource( 3 )
 
 [node name="TextureButton" type="TextureButton" parent="."]
 
@@ -26,7 +32,7 @@ margin/bottom = 445.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 3 )
+textures/normal = ExtResource( 4 )
 params/resize_mode = 0
 params/scale = Vector2( 0.5, 0.5 )
 params/stretch_mode = 0

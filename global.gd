@@ -3,6 +3,7 @@ extends Node
 # var a = 2
 # var b = "textvar"
 var termometro
+var termometrofinal
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization

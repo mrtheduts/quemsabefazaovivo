@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://iniciar.gd" type="Script" id=1]
 [ext_resource path="res://sprites/fundotelapreta.png" type="Texture" id=2]
@@ -6,6 +6,12 @@
 [ext_resource path="res://sprites/Faustao2.png" type="Texture" id=4]
 [ext_resource path="res://sprites/botaostart.png" type="Texture" id=5]
 [ext_resource path="res://sprites/botaostartpress.png" type="Texture" id=6]
+[ext_resource path="res://sprites/Logo/Logo/logo1.png" type="Texture" id=7]
+[ext_resource path="res://sprites/Logo/Logo/logo2.png" type="Texture" id=8]
+[ext_resource path="res://sprites/Logo/Logo/logo3.png" type="Texture" id=9]
+[ext_resource path="res://sprites/Logo/Logo/logo4.png" type="Texture" id=10]
+[ext_resource path="res://sprites/Logo/Logo/logo5.png" type="Texture" id=11]
+[ext_resource path="res://sprites/Logo/Logo/logo6.png" type="Texture" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -18,6 +24,15 @@ animations = [ {
 
 [sub_resource type="Theme" id=2]
 
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="menuiniciar" type="Node2D"]
 
@@ -32,6 +47,7 @@ texture = ExtResource( 2 )
 
 [node name="titulo" type="Label" parent="."]
 
+visibility/visible = false
 rect/scale = Vector2( 4, 4 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -74,11 +90,11 @@ drag_margin/bottom = 0.2
 
 [node name="faustao" type="AnimatedSprite" parent="."]
 
-visibility/visible = false
-transform/pos = Vector2( 166.487, 407.047 )
+transform/pos = Vector2( -74.3528, 416.135 )
 transform/scale = Vector2( 0.584237, 0.584237 )
 frames = SubResource( 1 )
 animation = "default"
+frame = 1
 playing = true
 
 [node name="jogar" type="TextureButton" parent="."]
@@ -88,10 +104,10 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 theme/theme = SubResource( 2 )
-margin/left = -181.0
-margin/top = 383.0
-margin/right = -21.0
-margin/bottom = 475.0
+margin/left = -393.0
+margin/top = 415.0
+margin/right = -233.0
+margin/bottom = 507.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -100,6 +116,15 @@ textures/pressed = ExtResource( 6 )
 params/resize_mode = 0
 params/scale = Vector2( 0.5, 0.5 )
 params/stretch_mode = 0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
+transform/pos = Vector2( -159.387, 298.044 )
+transform/scale = Vector2( 2.59081, 2.59081 )
+frames = SubResource( 3 )
+animation = "default"
+frame = 2
+playing = true
 
 [connection signal="pressed" from="jogar" to="." method="_on_jogar_pressed"]
 

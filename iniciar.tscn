@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://iniciar.gd" type="Script" id=1]
+[ext_resource path="res://sprites/fundotelapreta.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Faustao1.png" type="Texture" id=3]
+[ext_resource path="res://sprites/Faustao2.png" type="Texture" id=4]
+[ext_resource path="res://sprites/botaostart.png" type="Texture" id=5]
+[ext_resource path="res://sprites/botaostartpress.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+
+[sub_resource type="Theme" id=2]
+
+
+[node name="Node2D" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="fundo" type="Sprite" parent="."]
+
+transform/pos = Vector2( -23.6287, 324.872 )
+transform/scale = Vector2( 1.59191, 1.59192 )
+texture = ExtResource( 2 )
+
+[node name="titulo" type="Label" parent="."]
+
+rect/scale = Vector2( 4, 4 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -403.0
+margin/top = 85.0
+margin/right = -257.0
+margin/bottom = 191.0
+custom_colors/font_color = Color( 0.976471, 0.94902, 0.94902, 1 )
+custom_colors/font_color_shadow = Color( 0.136719, 0.136719, 0.136719, 1 )
+text = "Faustop: quem sabe faz ao vivo"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+transform/pos = Vector2( -26.5487, 326.085 )
+transform/scale = Vector2( -0.78981, 1.14272 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 0.87, 0.97 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = false
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
+[node name="faustao" type="AnimatedSprite" parent="."]
+
+transform/pos = Vector2( 166.487, 407.047 )
+transform/scale = Vector2( 0.584237, 0.584237 )
+frames = SubResource( 1 )
+animation = "default"
+playing = true
+
+[node name="jogar" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = SubResource( 2 )
+margin/left = -181.0
+margin/top = 383.0
+margin/right = -21.0
+margin/bottom = 475.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 5 )
+textures/pressed = ExtResource( 6 )
+params/resize_mode = 0
+params/scale = Vector2( 0.5, 0.5 )
+params/stretch_mode = 0
+
+[connection signal="pressed" from="jogar" to="." method="_on_jogar_pressed"]
+
+

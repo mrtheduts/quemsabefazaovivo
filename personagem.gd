@@ -54,6 +54,8 @@ func _fixed_process(delta):
 	var breakdance = Input.is_action_pressed("breakdance")
 	var estrela = Input.is_action_pressed("estrela")
 	var rebolada = Input.is_action_pressed("rebolada")
+	var travar = Input.is_action_pressed("travar")
+	var queda = Input.is_action_pressed("queda")
 
 	
 	#Apply the horizontal movement
@@ -100,9 +102,28 @@ func _fixed_process(delta):
 	var new_anim = "idle"
 	sprite.set_flip_h(facing_dir == 1)
 	if last_frame_grounded:
+		if velocity.x == 0 && travar:
+			new_anim = "travado"
+			if not get_node("SamplePlayer").is_active():
+				get_node("SamplePlayer").play("IssoOAgoraQueBonito")
+				get_node("SamplePlayer").play("Boo1")
+		elif anim.get_current_animation() == "travado" && anim.get_pos() < 2:
+			new_anim = "travado"
+			velocity.x = 0
+		elif velocity.x == 0 && queda:
+			new_anim = "queda"
+			if not get_node("SamplePlayer").is_active():
+				get_node("SamplePlayer").play("Eeeeita")
+				get_node("SamplePlayer").play("Boo2")
+		elif anim.get_current_animation() == "queda" && anim.get_pos() < 2:
+			new_anim = "queda"
+			velocity.x = 0
 		if estrela:
 			new_anim = "estrela"
-
+			if not get_node("SamplePlayer").is_active():
+				get_node("SamplePlayer").play("OLoco")
+				get_node("SamplePlayer").play("CrowdCheer")
+				get_node("SamplePlayer").play("SpinJump")
 		elif anim.get_current_animation() == "estrela" && anim.get_pos() < 0.85:
 			new_anim = "estrela"
 			if facing_dir == 1:
@@ -113,32 +134,46 @@ func _fixed_process(delta):
 			global.termometro = global.termometro - 0.01
 		elif breakdance:
 			new_anim = "breakdance"
+			if not get_node("SamplePlayer").is_active():
+				get_node("SamplePlayer").play("OLokoMeu")
+				get_node("SamplePlayer").play("CrowdCheer")
+				get_node("SamplePlayer").play("SpinJump")
 		elif anim.get_current_animation() == "breakdance" && anim.get_pos() < 1.5:
 			new_anim = "breakdance"
 			sprite.set_flip_h(facing_dir == -1)
 			global.termometro = global.termometro - 0.05
 		elif velocity.x < 0 && moonwalk:
 			new_anim = "moveright"
+			if not get_node("SamplePlayer").is_active():
+				get_node("SamplePlayer").play("PorraMeuAla")
+				get_node("SamplePlayer").play("CrowdCheer")
 		elif velocity.x > 0 && moonwalk:
-			new_anim = "moveleft"
+			new_anim = "moveright"
+			if not get_node("SamplePlayer").is_active():
+				get_node("SamplePlayer").play("PorraMeuAla")
+				get_node("SamplePlayer").play("CrowdCheer")
 		elif velocity.x > 0:
 			new_anim = "moveleft"
 		elif velocity.x < 0:
 			new_anim = "moveleft"
 		elif velocity.x == 0 && macarena:
 			new_anim = "macarena"
+			if not get_node("SamplePlayer").is_active():
+				get_node("SamplePlayer").play("macarena")
+				get_node("SamplePlayer").play("CrowdCheer")
 		elif anim.get_current_animation() == "macarena" && anim.get_pos() < 4:
 			new_anim = "macarena"
 			sprite.set_flip_h(facing_dir == 1)
 			global.termometro = global.termometro - 0.01
 		elif velocity.x == 0 && rebolada:
 			new_anim = "rebolada"
+			if not get_node("SamplePlayer").is_active():
+				get_node("SamplePlayer").play("Eeeeita")
+				get_node("SamplePlayer").play("CrowdCheer")
 		elif anim.get_current_animation() == "rebolada" && anim.get_pos() < 1.5:
 			new_anim = "rebolada"
 			sprite.set_flip_h(facing_dir == 1)
 			global.termometro = global.termometro - 0.01
-
-			
 		
 	else:
 		new_anim = "jumping"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=1]
+[gd_scene load_steps=18 format=1]
 
 [ext_resource path="res://iniciar.gd" type="Script" id=1]
 [ext_resource path="res://sprites/fundotelapreta.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://sprites/Logo/Logo/logo4.png" type="Texture" id=10]
 [ext_resource path="res://sprites/Logo/Logo/logo5.png" type="Texture" id=11]
 [ext_resource path="res://sprites/Logo/Logo/logo6.png" type="Texture" id=12]
+[ext_resource path="res://sprites/flat,800x800,075,f.u3.jpg" type="Texture" id=13]
+[ext_resource path="res://sprites/textinho.png" type="Texture" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -94,7 +96,6 @@ transform/pos = Vector2( -74.3528, 416.135 )
 transform/scale = Vector2( 0.584237, 0.584237 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 1
 playing = true
 
 [node name="jogar" type="TextureButton" parent="."]
@@ -104,10 +105,10 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 theme/theme = SubResource( 2 )
-margin/left = -393.0
-margin/top = 415.0
-margin/right = -233.0
-margin/bottom = 507.0
+margin/left = -396.0
+margin/top = 372.0
+margin/right = -236.0
+margin/bottom = 464.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -126,6 +127,33 @@ animation = "default"
 frame = 2
 playing = true
 
+[node name="TextureButton" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -393.0
+margin/top = 479.0
+margin/right = -313.6
+margin/bottom = 559.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 13 )
+params/resize_mode = 0
+params/scale = Vector2( 0.1, 0.1 )
+params/stretch_mode = 0
+
+[node name="text" type="Sprite" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( -104.72, 352.764 )
+transform/scale = Vector2( 1.26108, 1.26108 )
+texture = ExtResource( 14 )
+
 [connection signal="pressed" from="jogar" to="." method="_on_jogar_pressed"]
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
 
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-var tempo = 11
+var tempo = 31
 onready var timer = get_node("timer")
 # class member variables go here, for example:
 # var a = 2

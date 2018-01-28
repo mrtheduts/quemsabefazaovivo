@@ -6,10 +6,14 @@ extends Node2D
 
 func _ready():
 	# Called every time the node is added to the scene.
-	if global.termometrofinal >= 5:
-		get_node("vocevenceu").hide()
+	if global.termometrofinal <= 5:
+		get_node("vocevenceu").show()
+		get_node("SamplePlayer").play("ScreamOfJoy")
+		get_node("SamplePlayer").play("ComoIssoAconteceu")
 	else:
-		get_node("gameover").hide()
+		get_node("gameover").show()
+		get_node("SamplePlayer").play("Boo2")
+		get_node("SamplePlayer").play("Eeeeita")
 	# Initialization here
 	pass
 

@@ -2,6 +2,7 @@ extends Node2D
 
 var maingame = preload("res://main.tscn")
 var retryscreen = preload("res://gameover.tscn")
+var toggle = false
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
@@ -24,3 +25,17 @@ func retry(pathtochild):
 	get_parent().add_child(retry)
 	pass
 	
+
+func _on_TextureButton_pressed():
+	
+	if !toggle:
+		get_node("text").show()
+		get_node("AnimatedSprite").hide()
+		get_node("jogar").hide()
+		toggle = true
+	elif toggle:
+		get_node("text").hide()
+		get_node("AnimatedSprite").show()
+		get_node("jogar").show()
+		toggle = false
+	pass # replace with function body
